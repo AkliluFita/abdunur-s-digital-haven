@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Briefcase, User, Home, Shield, BedDouble, Baby, Briefcase as BriefcaseIcon, Heart, Users, Plane, BookOpen, X, CheckCircle } from "lucide-react";
+import { Briefcase, User, Home, Shield, BedDouble, Baby, Briefcase as BriefcaseIcon, Heart, Users, Plane, BookOpen, X, CheckCircle, ExternalLink } from "lucide-react";
 
 import houseRent from "@/assets/service-house-rent.jpg";
 import security from "@/assets/service-security.jpg";
@@ -19,6 +19,8 @@ interface Service {
   details: string;
   highlights: string[];
   category: string;
+  externalLink?: string;
+  logo?: string;
 }
 
 const businessServices: Service[] = [
@@ -27,6 +29,8 @@ const businessServices: Service[] = [
     title: "House Rent Service",
     description: "Find your perfect home with our comprehensive house rental listings across Richardson and the DFW area.",
     image: houseRent,
+    externalLink: "https://abdunur.com/house-rent",
+    logo: "🏠",
     details:
       "We connect families and individuals with quality rental homes throughout the Dallas-Fort Worth metroplex. Our team personally vets each property to ensure safe, comfortable, and affordable housing options for the community.",
     highlights: [
@@ -42,6 +46,8 @@ const businessServices: Service[] = [
     title: "Advanced Security Services",
     description: "Professional security solutions for homes, businesses, and community events with trained personnel.",
     image: security,
+    externalLink: "https://abdunur.com/security",
+    logo: "🛡️",
     details:
       "Our advanced security services provide trained professionals for residential, commercial, and event security needs. We deliver peace of mind through reliable, responsive, and professional protection services.",
     highlights: [
@@ -57,6 +63,8 @@ const businessServices: Service[] = [
     title: "Room Rent Services",
     description: "Affordable room rentals for individuals and students seeking comfortable, community-friendly accommodation.",
     image: roomRent,
+    externalLink: "https://abdunur.com/room-rent",
+    logo: "🛏️",
     details:
       "Whether you're a student, new arrival, or individual looking for affordable shared accommodation, we offer carefully selected room rentals in welcoming, community-oriented environments.",
     highlights: [
@@ -72,6 +80,8 @@ const businessServices: Service[] = [
     title: "Baby Sitters",
     description: "Trusted and caring babysitting services provided by vetted, experienced childcare professionals.",
     image: babysitter,
+    externalLink: "https://abdunur.com/babysitters",
+    logo: "👶",
     details:
       "We connect families with background-checked, experienced babysitters who provide safe, nurturing care for your children. Our sitters are passionate about child development and speak multiple languages to serve our diverse community.",
     highlights: [
@@ -87,6 +97,8 @@ const businessServices: Service[] = [
     title: "Job Find",
     description: "Career placement and job-finding services helping community members access meaningful employment opportunities.",
     image: jobFind,
+    externalLink: "https://abdunur.com/job-find",
+    logo: "💼",
     details:
       "We assist members of the Ethiopian and Eritrean diaspora — and the broader community — in finding employment through our extensive employer network, resume preparation, and interview coaching services.",
     highlights: [
@@ -180,15 +192,11 @@ const ServiceModal = ({ service, onClose }: ServiceModalProps) => {
       aria-modal="true"
       aria-label={service.title}
     >
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-foreground/50 backdrop-blur-sm"
         onClick={onClose}
       />
-
-      {/* Panel */}
       <div className="relative bg-card border border-border rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fade-up">
-        {/* Image header */}
         <div className="relative h-52 overflow-hidden rounded-t-3xl">
           <img
             src={service.image}
@@ -196,11 +204,9 @@ const ServiceModal = ({ service, onClose }: ServiceModalProps) => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent" />
-          {/* Category tag */}
           <span className="absolute top-4 left-4 bg-gold text-accent-foreground text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
             {service.category}
           </span>
-          {/* Close button */}
           <button
             onClick={onClose}
             className="absolute top-4 right-4 w-8 h-8 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition-colors"
@@ -208,7 +214,6 @@ const ServiceModal = ({ service, onClose }: ServiceModalProps) => {
           >
             <X size={16} />
           </button>
-          {/* Title overlay */}
           <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gold/20 border border-gold/40 flex items-center justify-center flex-shrink-0">
               <Icon size={20} className="text-gold" strokeWidth={1.8} />
@@ -217,7 +222,6 @@ const ServiceModal = ({ service, onClose }: ServiceModalProps) => {
           </div>
         </div>
 
-        {/* Body */}
         <div className="p-6 md:p-8">
           <p className="text-muted-foreground text-base leading-relaxed mb-6">{service.details}</p>
 
@@ -236,10 +240,21 @@ const ServiceModal = ({ service, onClose }: ServiceModalProps) => {
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            {service.externalLink && (
+              <a
+                href={service.externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 shadow-md"
+              >
+                <ExternalLink size={15} />
+                Visit Website
+              </a>
+            )}
             <a
               href="/contact"
               onClick={onClose}
-              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-200 hover:-translate-y-0.5 shadow-md"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gold text-accent-foreground font-semibold text-sm hover:bg-gold/90 transition-all duration-200 hover:-translate-y-0.5 shadow-md"
             >
               Get Started
             </a>
@@ -284,6 +299,28 @@ const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+
+        {/* Logo badge */}
+        {service.logo && (
+          <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-card/90 backdrop-blur-sm border border-border flex items-center justify-center text-lg shadow-md">
+            {service.logo}
+          </div>
+        )}
+
+        {/* External link icon */}
+        {service.externalLink && (
+          <a
+            href={service.externalLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-card/90 backdrop-blur-sm border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all duration-200 shadow-md"
+            aria-label={`Visit ${service.title} website`}
+          >
+            <ExternalLink size={14} />
+          </a>
+        )}
+
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <span className="bg-black/50 text-white text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">
             Click for details
@@ -293,8 +330,21 @@ const ServiceCard = ({ service, onOpen }: ServiceCardProps) => {
 
       {/* Content */}
       <div className="p-6">
-        <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
-          <Icon size={20} className="text-gold" strokeWidth={1.8} />
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300">
+            <Icon size={20} className="text-gold" strokeWidth={1.8} />
+          </div>
+          {service.externalLink && (
+            <a
+              href={service.externalLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="ml-auto text-xs font-medium text-muted-foreground hover:text-primary flex items-center gap-1 transition-colors"
+            >
+              Visit <ExternalLink size={11} />
+            </a>
+          )}
         </div>
         <h4 className="font-display text-lg font-semibold text-primary mb-2 leading-snug">{service.title}</h4>
         <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
@@ -340,7 +390,6 @@ const Services = () => {
     <>
       <section id="services" className="py-24 px-6 bg-background scroll-mt-16">
         <div className="container mx-auto">
-          {/* Section header */}
           <div className="text-center mb-16">
             <p className="section-tag mb-3">What I Offer</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-primary mb-4">My Services</h2>
@@ -365,7 +414,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Modal */}
       <ServiceModal service={activeService} onClose={() => setActiveService(null)} />
     </>
   );
