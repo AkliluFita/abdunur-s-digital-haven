@@ -4,15 +4,17 @@ import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Calendar, Play, Image, ExternalLink } from "lucide-react";
 import abdunurAdaptmom from "@/assets/abdunur_adaptmom.jpg";
+import abdunurBaySitter from "@/assets/service-babysitter.jpg";
 import abdunurQuran from "@/assets/abdunur_quran.jpg";
 import abdunurSecurity from "@/assets/abdunur_security.jpg";
-import abdunurVisiting from "@/assets/abdunur_visiting.jpg";
+import abdunurVisiting from "@/assets/abdunur_visiting.jpg"; 
+import abdunurRoom from "@/assets/abdunur_room.jpg";
 
 const flyers = [
   {
-    title: "House Rent Services — Spring 2024",
+    title: "House Rent Services",
     description: "New listings available across Richardson and DFW. Affordable family homes and apartments.",
-    image: abdunurVisiting,
+    image: abdunurRoom,
   },
   {
     title: "Quran Classes Enrollment Open",
@@ -27,6 +29,16 @@ const flyers = [
   {
     title: "Babysitter Network Expansion",
     description: "We're growing our certified babysitter network. Join us or find a trusted caregiver today.",
+    image: abdunurBaySitter,
+  },
+  {
+    title: "Visiting Scholars Program",
+    description: "Host international scholars and enrich your family's cultural experience. Apply to participate today.",
+    image: abdunurVisiting,
+  },
+  {
+    title: "Adaptive Parenting Workshop",
+    description: "Join our specialized workshop for parents with special needs children. Support and strategies shared.",
     image: abdunurAdaptmom,
   },
 ];
