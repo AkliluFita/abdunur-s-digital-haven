@@ -102,7 +102,7 @@ const Hero = () => {
               the Ethiopian and Eritrean diaspora. As the founder of{" "}
               <strong className="text-foreground font-semibold">Edelala</strong>, he has spent over
               10 years building a legacy of service that transcends business — creating a lifeline
-              for thousands through employment, healthcare advocacy, and social connection.
+              for thousands through employment, healthcare advocacy, and social connection..
             </p>
 
             {/* Stats row */}
