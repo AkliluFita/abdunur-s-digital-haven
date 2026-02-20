@@ -3,50 +3,54 @@ import Footer from "@/components/Footer";
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Calendar, Play, Image, ExternalLink } from "lucide-react";
+import abdunurAdaptmom from "@/assets/abdunur_adaptmom.jpg";
+import abdunurQuran from "@/assets/abdunur_quran.jpg";
+import abdunurSecurity from "@/assets/abdunur_security.jpg";
+import abdunurVisiting from "@/assets/abdunur_visiting.jpg";
+
+const flyers = [
+  {
+    title: "House Rent Services — Spring 2024",
+    description: "New listings available across Richardson and DFW. Affordable family homes and apartments.",
+    image: abdunurVisiting,
+  },
+  {
+    title: "Quran Classes Enrollment Open",
+    description: "Register your children for Tajweed and Hifz classes. All ages welcome, online & in-person.",
+    image: abdunurQuran,
+  },
+  {
+    title: "Security Services Launch",
+    description: "Introducing our advanced security solutions for homes, businesses, and community events.",
+    image: abdunurSecurity,
+  },
+  {
+    title: "Babysitter Network Expansion",
+    description: "We're growing our certified babysitter network. Join us or find a trusted caregiver today.",
+    image: abdunurAdaptmom,
+  },
+];
 
 const events = [
   {
     title: "Ethiopian New Year Community Celebration",
     date: "September 11, 2024",
     description: "Annual community gathering to celebrate Enkutatash with traditional food, music, and cultural performances.",
-    type: "event" as const,
   },
   {
     title: "Diaspora Job Fair 2024",
     date: "August 15, 2024",
     description: "Connecting community members with local employers. Over 30 companies participated in this career-building event.",
-    type: "event" as const,
   },
   {
     title: "Hajj Travel Information Session",
     date: "March 20, 2024",
     description: "Informational session about upcoming Hajj travel packages, visa requirements, and spiritual preparation guidance.",
-    type: "event" as const,
   },
   {
     title: "Ramadan Charity Drive",
     date: "March 10, 2024",
     description: "Community-wide charity initiative distributing food packages and essentials to families in need during the holy month.",
-    type: "event" as const,
-  },
-];
-
-const flyers = [
-  {
-    title: "House Rent Services — Spring 2024",
-    description: "New listings available across Richardson and DFW. Affordable family homes and apartments.",
-  },
-  {
-    title: "Quran Classes Enrollment Open",
-    description: "Register your children for Tajweed and Hifz classes. All ages welcome, online & in-person.",
-  },
-  {
-    title: "Security Services Launch",
-    description: "Introducing our advanced security solutions for homes, businesses, and community events.",
-  },
-  {
-    title: "Babysitter Network Expansion",
-    description: "We're growing our certified babysitter network. Join us or find a trusted caregiver today.",
   },
 ];
 
@@ -157,11 +161,8 @@ const EventsPage = () => {
                   className="bg-card border border-border rounded-2xl overflow-hidden hover:-translate-y-1 hover:border-accent/30 transition-all duration-300 group"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
-                  {/* Placeholder flyer visual */}
-                  <div className="h-40 bg-gradient-to-br from-primary/10 via-gold/10 to-primary/5 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Image size={28} className="text-gold" />
-                    </div>
+                  <div className="h-48 overflow-hidden">
+                    <img src={flyer.image} alt={flyer.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <div className="p-5">
                     <h3 className="font-display text-base font-bold text-primary mb-2 leading-snug">{flyer.title}</h3>
