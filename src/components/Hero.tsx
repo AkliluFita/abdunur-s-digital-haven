@@ -1,4 +1,4 @@
-import profileImg from "@/assets/abdunur-image1.png";
+import profileImg from "@/assets/abdunur_zakir.png";
 import { Mail, ArrowRight, MapPin, Award, Users } from "lucide-react";
 
 const stats = [

@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import profileImg from "@/assets/abdunur-image1.png";
+import profileImg from "@/assets/abdunur_zakir.png";
 import communityImg from "@/assets/history-community.jpg";
 import edelalaImg from "@/assets/history-edelala.jpg";
 import { Award, Users, Heart, Star, BookOpen, Globe } from "lucide-react";
